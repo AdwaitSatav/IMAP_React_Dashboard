@@ -1,7 +1,14 @@
-export const DEFAULT_CITY = { name: 'Mumbai', latitude: 19.07, longitude: 72.88 }
+export const DEFAULT_CITY = { name: 'Mumbai', country: 'India', latitude: 19.07, longitude: 72.88 }
 
 async function fetchJson(url, signal) {
-  const response = await fetch(url, { signal })
+  let response
+  try {
+    response = await fetch(url, { signal })
+  } catch (err) {
+    // Part 4: a failed network request (e.g. offline) gets a readable message; aborts pass through.
+    if (err.name === 'AbortError') throw err
+    throw new Error('No connection. Check your internet and try again.')
+  }
   if (!response.ok) throw new Error('Could not load data. Please try again.')
   const data = await response.json()
   if (data.error) throw new Error(data.reason || 'The weather service returned an error.')
@@ -42,4 +49,18 @@ export function getCurrentConditions(weather, airQuality) {
     uvIndex: numberOrNull(weather?.hourly?.uv_index?.[index]),
     aqi: numberOrNull(airQuality?.current?.us_aqi),
   }
+}
+
+// Part 4: city search (autocomplete). With no match the API leaves out "results", so return [].
+export async function searchCities(name, signal) {
+  const params = new URLSearchParams({ name, count: 5, language: 'en', format: 'json' })
+  const data = await fetchJson('https://geocoding-api.open-meteo.com/v1/search?' + params, signal)
+  return (data.results ?? []).map((place) => ({
+    id: place.id,
+    name: place.name,
+    admin1: place.admin1,
+    country: place.country,
+    latitude: place.latitude,
+    longitude: place.longitude,
+  }))
 }

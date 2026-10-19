@@ -1,4 +1,9 @@
 .location { color: var(--text-muted); margin-bottom: 1rem; }
+
+/* Part 4: city search, current city + favourite star, favourite chips */
+.cityBar { display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 1rem; }
+.current { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap; }
+.cityName { font-size: 1.2rem; font-weight: 700; overflow-wrap: anywhere; min-width: 0; }
 .label { color: var(--text-muted); font-size: 0.95rem; font-weight: 500; }
 .value { font-size: 1.8rem; font-weight: 700; margin: 0.75rem 0; overflow-wrap: anywhere; }
 .message { margin-top: 1rem; }

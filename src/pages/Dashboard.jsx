@@ -1,25 +1,23 @@
-import { DEFAULT_CITY, fetchWeather, fetchAirQuality, getCurrentConditions } from '../api/weather.js'
-import useFetch from '../hooks/useFetch.js'
-import { calculateGoOutScore } from '../utils/goOutScore.js'
+import { cityLabel, useCity } from '../context/CityContext.jsx'
+import useCityWeather from '../hooks/useCityWeather.js'
 import { getDailyForecast, getNext24Hours, getNext24HoursAqi } from '../utils/chartData.js'
 import AqiTrendChart from '../components/AqiTrendChart.jsx'
 import BestHours from '../components/BestHours.jsx'
 import ChartCard from '../components/ChartCard.jsx'
+import CitySearch from '../components/CitySearch.jsx'
 import DailyForecastChart from '../components/DailyForecastChart.jsx'
+import FavouriteButton from '../components/FavouriteButton.jsx'
+import FavouriteChips from '../components/FavouriteChips.jsx'
 import HourlyTempChart from '../components/HourlyTempChart.jsx'
 import ScoreGauge from '../components/ScoreGauge.jsx'
 import styles from './Dashboard.module.css'
 
 const hasValues = (rows, key) => rows.some((row) => row[key] !== null)
 
-const loadWeather = (signal) => fetchWeather(DEFAULT_CITY, signal)
-const loadAirQuality = (signal) => fetchAirQuality(DEFAULT_CITY, signal)
-
 export default function Dashboard() {
-  const weather = useFetch(loadWeather)
-  const air = useFetch(loadAirQuality)
-  const conditions = getCurrentConditions(weather.data, air.data)
-  const result = calculateGoOutScore(conditions)
+  // Part 4: the city comes from CityContext; changing it refetches and updates every card and chart.
+  const { city, setCity } = useCity()
+  const { weather, air, conditions, result } = useCityWeather(city)
   const stats = [
     { label: 'Temperature', value: conditions.temperature, unit: '°C', source: weather },
     { label: 'Rain chance', value: conditions.rainChance, unit: '%', source: weather },
@@ -43,7 +41,18 @@ export default function Dashboard() {
       <h1 className="page-title">Dashboard</h1>
       <p className="page-subtitle">Should you go out today? Live weather, air quality and your GoOut Score.</p>
 
-      <p className={styles.location}>Mumbai · Rain and UV: current hour forecast</p>
+      <div className={`card ${styles.cityBar}`}>
+        <CitySearch onSelect={setCity} label="Change city" />
+        <div className={styles.current}>
+          <p className={styles.cityName}>
+            <span aria-hidden="true">📍</span> {cityLabel(city)}
+          </p>
+          <FavouriteButton city={city} />
+        </div>
+        <FavouriteChips selected={city} onSelect={setCity} />
+      </div>
+
+      <p className={styles.location}>{city.name} · Rain and UV: current hour forecast</p>
       <div className="grid">
         {stats.map(({ label, value, unit, source }) => (
           <div key={label} className="card" aria-busy={source.loading}>
