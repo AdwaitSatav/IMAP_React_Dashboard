@@ -1,0 +1,12 @@
+.legend {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  margin-top: 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+.legend li { display: flex; align-items: center; gap: 0.35rem; }
+.legend strong { color: var(--text); font-weight: 600; }
+.swatch { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
