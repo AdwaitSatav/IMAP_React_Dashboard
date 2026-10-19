@@ -1,0 +1,38 @@
+.star {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.star span { font-size: 1.1rem; line-height: 1; }
+.star:hover { background: var(--primary-soft); }
+.saved { border-color: var(--meh); }
+.saved span { color: var(--meh); }
+
+.chips { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; }
+.chipsLabel { color: var(--text-muted); font-size: 0.85rem; margin-right: 0.15rem; }
+.chip {
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.chip:hover { background: var(--primary-soft); }
+.chipActive, .chipActive:hover { background: var(--primary); border-color: var(--primary); color: var(--surface); }
+.hint { color: var(--text-muted); font-size: 0.85rem; }

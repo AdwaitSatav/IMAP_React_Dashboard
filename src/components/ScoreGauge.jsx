@@ -1,12 +1,7 @@
+import { SCORE_LEVELS } from '../utils/goOutScore.js'
 import styles from './ScoreGauge.module.css'
 
 const ARC = 'M 20 100 A 80 80 0 0 1 180 100'
-const BANDS = [
-  { tone: 'great', text: '80–100 Great' },
-  { tone: 'good', text: '60–79 Good' },
-  { tone: 'meh', text: '40–59 Mixed' },
-  { tone: 'bad', text: '0–39 Stay in' },
-]
 
 // result: { score, label, tone } from calculateGoOutScore. pathLength="100" lets the
 // coloured arc fill exactly `score` percent of the half circle via strokeDasharray.
@@ -31,10 +26,11 @@ export default function ScoreGauge({ result }) {
         {label}
       </p>
       <ul className={styles.bands} aria-label="Score bands">
-        {BANDS.map((band) => (
-          <li key={band.tone}>
-            <span className={styles.dot} style={{ background: `var(--${band.tone})` }} />
-            {band.text}
+        {/* Part 4: legend uses the same labels as calculateGoOutScore */}
+        {SCORE_LEVELS.map((level) => (
+          <li key={level.tone}>
+            <span className={styles.dot} style={{ background: `var(--${level.tone})` }} />
+            <strong>{level.range}</strong> {level.label}
           </li>
         ))}
       </ul>

@@ -16,12 +16,13 @@
 
   --radius: 12px;
   --shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+  color-scheme: light;
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   color: var(--text);
   background: var(--bg);
 }
 
-/* Dark theme: Person D toggles data-theme="dark" on <html> in Part 4 */
+/* Dark theme: useTheme (Part 4) sets data-theme="dark" on <html> */
 [data-theme='dark'] {
   --bg: #0f172a;
   --surface: #1e293b;
@@ -30,6 +31,14 @@
   --border: #334155;
   --primary: #60a5fa;
   --primary-soft: #1e3a8a;
+
+  /* Brighter score / AQI tones so labels and chart bands stay readable on dark surfaces */
+  --great: #22c55e;
+  --good: #a3e635;
+  --meh: #fbbf24;
+  --bad: #f87171;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  color-scheme: dark;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }

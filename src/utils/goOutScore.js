@@ -1,3 +1,11 @@
+// Score bands, highest first. Shared with the ScoreGauge legend so the labels always match.
+export const SCORE_LEVELS = [
+  { min: 80, range: '80–100', label: 'Great day to go out', tone: 'great' },
+  { min: 60, range: '60–79', label: 'Good time to go out', tone: 'good' },
+  { min: 40, range: '40–59', label: 'Mixed conditions', tone: 'meh' },
+  { min: 0, range: '0–39', label: 'Maybe stay in', tone: 'bad' },
+]
+
 export function calculateGoOutScore({ temperature, rainChance, aqi, uvIndex }) {
   if (![temperature, rainChance, aqi, uvIndex].every(Number.isFinite)) return null
 
@@ -8,8 +16,6 @@ export function calculateGoOutScore({ temperature, rainChance, aqi, uvIndex }) {
   const raw = 100 - Math.abs(temperature - 25) * 2 - rainChance * 0.4
     - Math.max(0, aqi - 50) * 0.3 - Math.max(0, uvIndex - 6) * 4
   const score = Math.max(0, Math.min(100, Math.round(raw)))
-  if (score >= 80) return { score, label: 'Great day to go out', tone: 'great' }
-  if (score >= 60) return { score, label: 'Good time to go out', tone: 'good' }
-  if (score >= 40) return { score, label: 'Mixed conditions', tone: 'meh' }
-  return { score, label: 'Maybe stay in', tone: 'bad' }
+  const { label, tone } = SCORE_LEVELS.find((level) => score >= level.min)
+  return { score, label, tone }
 }
