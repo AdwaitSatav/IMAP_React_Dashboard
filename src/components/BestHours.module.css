@@ -1,0 +1,36 @@
+.summary { font-weight: 600; margin-bottom: 0.75rem; }
+.timeline {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+  gap: 0.5rem;
+}
+.hour {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.2rem;
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+.time { color: var(--text-muted); font-size: 0.75rem; }
+.score { font-size: 1.1rem; font-weight: 700; }
+.track { height: 4px; border-radius: 2px; background: var(--border); overflow: hidden; }
+.fill { display: block; height: 100%; }
+.day { color: var(--primary); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; }
+.best { border: 2px solid var(--primary); background: var(--primary-soft); }
+.badge {
+  position: absolute;
+  top: -0.55rem;
+  right: 0.35rem;
+  padding: 0 0.35rem;
+  border-radius: 999px;
+  background: var(--primary);
+  color: var(--surface);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+.missing { opacity: 0.55; border-style: dashed; }
