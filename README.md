@@ -1,4 +1,4 @@
-# GoOut Score Dashboard
+# GoOut Score React Dashboard
 
 A React dashboard that answers one question: **is it a good time to go outside?** It combines live
 weather and air-quality data from the free [Open-Meteo](https://open-meteo.com) APIs into a single
