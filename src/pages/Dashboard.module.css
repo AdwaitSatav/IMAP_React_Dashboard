@@ -1,0 +1,5 @@
+.location { color: var(--text-muted); margin-bottom: 1rem; }
+.label { color: var(--text-muted); font-size: 0.95rem; font-weight: 500; }
+.value { font-size: 1.8rem; font-weight: 700; margin: 0.75rem 0; overflow-wrap: anywhere; }
+.message { margin-top: 1rem; }
+.message button { margin-left: 0.5rem; padding: 0.35rem 0.65rem; cursor: pointer; }
