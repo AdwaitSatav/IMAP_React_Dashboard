@@ -104,10 +104,10 @@ src/
 
 | Part | Member | Responsibility |
 |---|---|---|
-| 1 | Person 1 (name) | Project setup, routing, layout, design tokens |
-| 2 | Person 2 (name) | API layer, useFetch hook, GoOut Score logic, live cards |
-| 3 | Person 3 (name) | Charts and visualisation (Recharts, gauge, best hours) |
-| 4 | Person 4 (name) | City search, Compare page, favourites, dark mode, CI, README, deployment |
+| 1 | Adwait | Project setup, routing, layout, design tokens |
+| 2 | Ryan | API layer, useFetch hook, GoOut Score logic, live cards |
+| 3 | Arham | Charts and visualisation (Recharts, gauge, best hours) |
+| 4 | Yugraj | City search, Compare page, favourites, dark mode, CI, README, deployment |
 
 ## API credits
 
