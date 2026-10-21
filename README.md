@@ -10,11 +10,13 @@ weather and air-quality data from the free [Open-Meteo](https://open-meteo.com) 
 
 ## Screenshots
 
-| Dashboard | Compare | Dark mode | Phone |
-|---|---|---|---|
-| _screenshot: `docs/dashboard.png`_ | _screenshot: `docs/compare.png`_ | _screenshot: `docs/dark.png`_ | _screenshot: `docs/mobile.png`_ |
+### Compare
 
-<!-- Add images to a docs/ folder and replace the placeholders, e.g. ![Dashboard](docs/dashboard.png) -->
+![Compare page](docs/compare.png)
+
+| Dashboard | Phone |
+|---|---|
+| <img src="docs/dashboard.png" alt="Dashboard" width="420"> | <img src="docs/mobile.png" alt="Phone view" width="220"> |
 
 ## Features
 
