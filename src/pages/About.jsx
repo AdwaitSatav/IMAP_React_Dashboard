@@ -3,13 +3,13 @@ import styles from './About.module.css'
 
 // Part 4 (Person D): full About page. Edit the names in TEAM before submitting.
 const TEAM = [
-  { part: 1, name: 'Person 1 (your name)', role: 'Project setup, routing and layout',
+  { part: 1, name: 'Adwait Satav', role: 'Project setup, routing and layout',
     detail: 'Vite + React, React Router pages, Navbar, Footer, design tokens' },
-  { part: 2, name: 'Person 2 (your name)', role: 'API layer and scoring',
+  { part: 2, name: 'Ryan Neshar', role: 'API layer and scoring',
     detail: 'Open-Meteo requests, useFetch hook, GoOut Score formula, live cards' },
-  { part: 3, name: 'Person 3 (your name)', role: 'Charts and visualisation',
+  { part: 3, name: 'Arham Shah', role: 'Charts and visualisation',
     detail: 'Recharts temperature, forecast and AQI charts, score gauge, best hours' },
-  { part: 4, name: 'Person 4 (your name)', role: 'Features and delivery',
+  { part: 4, name: 'Yugraj Singh', role: 'Features and delivery',
     detail: 'City search, Compare page, favourites, dark mode, CI, README, deployment' },
 ]
 
